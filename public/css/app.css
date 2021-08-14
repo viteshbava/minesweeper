@@ -1,0 +1,199 @@
+:root {
+  --boxDim: 50px;
+  --gridWidth: 10;
+  --gridFontSize: 1rem;
+  --boxColor-1: rgb(0, 89, 255);
+  --boxColor-2: #15782e;
+  --boxColor-3: #d2001a;
+  --boxColor-4: #7d13a9;
+  --boxColor-5: #f204a1;
+  --boxColor-6: #f204a1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: #f4f4f4;
+  font-family: Arial, Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ######################################################### */
+/* HEADER */
+/* ######################################################### */
+.fa-flag {
+  color: #dc3545;
+  font-size: 2rem;
+}
+
+.fa-stopwatch {
+  color: #ef9a00;
+  font-size: 2rem;
+}
+
+.ms {
+  /* ######################################################### */
+  /* GRID */
+  /* ######################################################### */
+}
+
+.ms_header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #15782e;
+}
+
+.ms_header__left, .ms_header__right {
+  display: flex;
+  flex: 1;
+}
+
+.ms_header__right {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ms_header__right i {
+  padding: 0 0.5rem;
+}
+
+.ms_header__right p {
+  font-size: 1.25rem;
+}
+
+.ms_header_difficulty {
+  font-size: 1.25rem;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+.ms_header_difficulty:focus {
+  outline: none;
+}
+
+.ms_header_difficulty option {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  background-color: inherit;
+  border-radius: 0.75rem;
+  padding: inherit;
+}
+
+.ms_header button {
+  justify-self: center;
+}
+
+.ms_grid {
+  font-size: var(--gridFontSize);
+}
+
+.ms_grid_row {
+  display: flex;
+}
+
+.ms_grid_row_box {
+  height: var(--boxDim);
+  width: var(--boxDim);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ms_grid_row_box:hover {
+  background-color: #69e032 !important;
+}
+
+.ms_grid_row_box.dug:hover {
+  background-color: #c9cdce !important;
+}
+
+.ms_grid_row_box.dug {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.ms_grid_row_box.fa-flag {
+  font-size: 2em;
+}
+
+.ms_grid_row_box.fa-bomb {
+  font-size: 2em;
+  background-color: #333;
+  color: maroon;
+}
+
+.ms_grid_row:nth-of-type(odd) .ms_grid_row_box {
+  background-color: #4bb31b;
+}
+
+.ms_grid_row:nth-of-type(odd) .ms_grid_row_box:nth-of-type(even) {
+  background-color: #51c21d;
+}
+
+.ms_grid_row:nth-of-type(even) .ms_grid_row_box {
+  background-color: #51c21d;
+}
+
+.ms_grid_row:nth-of-type(even) .ms_grid_row_box:nth-of-type(even) {
+  background-color: #4bb31b;
+}
+
+.ms_grid_row:nth-of-type(odd) .ms_grid_row_box.dug {
+  background-color: #aeb4b6;
+}
+
+.ms_grid_row:nth-of-type(odd) .ms_grid_row_box.dug:nth-of-type(even) {
+  background-color: #b7bcbe;
+}
+
+.ms_grid_row:nth-of-type(even) .ms_grid_row_box.dug {
+  background-color: #b7bcbe;
+}
+
+.ms_grid_row:nth-of-type(even) .ms_grid_row_box.dug:nth-of-type(even) {
+  background-color: #aeb4b6;
+}
+
+/* ######################################################### */
+/* BUTTONS */
+/* ######################################################### */
+.btn {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-size: 1rem;
+  transition: filter 0.15s linear;
+}
+
+.btn:active {
+  transform: scale(0.9);
+}
+
+.btn:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+.btn-light {
+  background-color: #f4f4f4;
+  color: #333;
+}

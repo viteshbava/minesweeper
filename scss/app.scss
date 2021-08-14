@@ -1,0 +1,191 @@
+$font-stack: Arial, Tahoma, Geneva, Verdana, sans-serif;
+$primary-red: #dc3545;
+$primary-blue: rgb(0, 89, 255);
+$primary-green: #15782e;
+$green-dark: #4bb31b;
+$green-med: #51c21d;
+$green-light: #69e032;
+$grey-dark: #aeb4b6;
+$grey-med: #b7bcbe;
+$grey-light: #c9cdce;
+$primary-gold: #ef9a00;
+$primary-light: #f4f4f4;
+$primary-dark: #333;
+
+:root {
+  --boxDim: 50px; //default if not set by javascript
+  --gridWidth: 10; //default if not set by javascript
+  --gridFontSize: 1rem;
+  --boxColor-1: rgb(0, 89, 255);
+  --boxColor-2: #15782e;
+  --boxColor-3: #d2001a;
+  --boxColor-4: #7d13a9;
+  --boxColor-5: #f204a1;
+  --boxColor-6: #f204a1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $primary-dark;
+  color: $primary-light;
+  font-family: $font-stack;
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ######################################################### */
+/* HEADER */
+/* ######################################################### */
+
+.fa-flag {
+  color: $primary-red;
+  font-size: 2rem;
+}
+
+.fa-stopwatch {
+  color: $primary-gold;
+  font-size: 2rem;
+}
+
+.ms {
+  &_header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: $primary-green;
+    &__left,
+    &__right {
+      display: flex;
+      flex: 1;
+    }
+    &__right {
+      justify-content: flex-end;
+      align-items: center;
+      i {
+        padding: 0 0.5rem;
+      }
+      p {
+        font-size: 1.25rem;
+      }
+    }
+    &_difficulty {
+      font-size: 1.25rem;
+      padding: 0.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      color: $primary-dark;
+      background-color: $primary-light;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+      option {
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        background-color: inherit;
+        border-radius: 0.75rem;
+        padding: inherit;
+      }
+    }
+    button {
+      justify-self: center;
+    }
+  }
+
+  /* ######################################################### */
+  /* GRID */
+  /* ######################################################### */
+
+  &_grid {
+    font-size: var(--gridFontSize);
+    &_row {
+      display: flex;
+      &_box {
+        height: var(--boxDim);
+        width: var(--boxDim);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          background-color: $green-light !important;
+        }
+        &.dug:hover {
+          background-color: $grey-light !important;
+        }
+      }
+      &_box.dug {
+        font-size: 2em;
+        font-weight: 600;
+      }
+      &_box.fa-flag {
+        font-size: 2em;
+      }
+      &_box.fa-bomb {
+        font-size: 2em;
+        background-color: $primary-dark;
+        color: maroon;
+      }
+    }
+    &_row:nth-of-type(odd) &_row_box {
+      background-color: $green-dark;
+    }
+    &_row:nth-of-type(odd) &_row_box:nth-of-type(even) {
+      background-color: $green-med;
+    }
+    &_row:nth-of-type(even) &_row_box {
+      background-color: $green-med;
+    }
+    &_row:nth-of-type(even) &_row_box:nth-of-type(even) {
+      background-color: $green-dark;
+    }
+    &_row:nth-of-type(odd) &_row_box.dug {
+      background-color: $grey-dark;
+    }
+    &_row:nth-of-type(odd) &_row_box.dug:nth-of-type(even) {
+      background-color: $grey-med;
+    }
+    &_row:nth-of-type(even) &_row_box.dug {
+      background-color: $grey-med;
+    }
+    &_row:nth-of-type(even) &_row_box.dug:nth-of-type(even) {
+      background-color: $grey-dark;
+    }
+  }
+}
+
+/* ######################################################### */
+/* BUTTONS */
+/* ######################################################### */
+
+.btn {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  font-size: 1rem;
+  transition: filter 0.15s linear;
+
+  &:active {
+    transform: scale(0.9);
+  }
+  &:hover {
+    filter: brightness(0.8);
+    cursor: pointer;
+  }
+  &-light {
+    background-color: $primary-light;
+    color: $primary-dark;
+  }
+}

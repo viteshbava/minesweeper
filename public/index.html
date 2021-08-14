@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/41b56c2eb2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/app.css">
+  <script defer src="./js/app.js"></script>
+  <title>Minesweeper</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="minesweeper">
+      <div class="ms_header">
+        <div class="ms_header__left">
+          <select class="ms_header_difficulty" id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <button class="btn btn-light" id="restart">Restart</button>
+        <div class="ms_header__right">
+          <i class="fas fa-flag"></i>
+          <p id="bomb-count">99</p>
+          <i class="fas fa-stopwatch"></i>
+          <p id="timer">999</p>
+        </div>
+
+
+
+      </div>
+
+        <div class="ms_grid">
+          <!-- <div class="ms_grid_row">
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box dug">4</div>
+            <div class="ms_grid_row_box dug">2</div>
+          </div><div class="ms_grid_row">
+            <div class="ms_grid_row_box dug"></div>
+            <div class="ms_grid_row_box dug">3</div>
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box"></div>
+          </div><div class="ms_grid_row">
+            <div class="ms_grid_row_box fas fa-flag"></div>
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box dug fas fa-bomb"></div>
+          </div><div class="ms_grid_row">
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box"></div>
+            <div class="ms_grid_row_box"></div>
+          </div> -->
+        </div>
+    </div>
+  </div>
+  
+
+  
+</body>
+</html>
