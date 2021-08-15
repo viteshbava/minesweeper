@@ -13,15 +13,16 @@ $primary-light: #f4f4f4;
 $primary-dark: #333;
 
 :root {
-  --boxDim: 50px; //default if not set by javascript
-  --gridWidth: 10; //default if not set by javascript
-  --gridFontSize: 1rem;
+  --boxDim: 60px; //default if not set by javascript
+  --gridFontSize: calc(var(--boxDim) * 4 / 15);
   --boxColor-1: rgb(0, 89, 255);
   --boxColor-2: #15782e;
   --boxColor-3: #d2001a;
   --boxColor-4: #7d13a9;
-  --boxColor-5: #f204a1;
+  --boxColor-5: #f29f04;
   --boxColor-6: #f204a1;
+  --boxColor-7: #f204a1;
+  --boxColor-8: #f204a1;
 }
 
 * {
@@ -79,7 +80,7 @@ body {
         font-size: 1.25rem;
       }
     }
-    &_difficulty {
+    &_mode {
       font-size: 1.25rem;
       padding: 0.25rem;
       border-radius: 0.5rem;
@@ -118,10 +119,11 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        &:hover {
+        cursor: default;
+        &:not(.dug):hover {
           background-color: $green-light !important;
         }
-        &.dug:hover {
+        &.dug.num:hover {
           background-color: $grey-light !important;
         }
       }
@@ -163,6 +165,13 @@ body {
       background-color: $grey-dark;
     }
   }
+}
+
+.border_top {
+  border-top: solid $primary-green 4px;
+}
+.border_bottom {
+  border-top: solid $primary-green 4px;
 }
 
 /* ######################################################### */
