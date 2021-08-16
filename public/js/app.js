@@ -255,6 +255,8 @@ function resetGame(params) {
   // check numbers supplied are valid
   if (settings.totalMines > settings.gridHeight * settings.gridWidth)
     throw new Error("Too many mines for grid size!");
+  // if game was previously ended, remove end state
+  endGame.remove();
   // reset game parameters
   timer.reset();
   gameStarted = false;
@@ -394,12 +396,16 @@ const endGame = {
     for (const m of mines) m.showBomb();
     triggeredMine.igniteBomb();
     checkFlags();
-    grid.classList.add("disable");
+    showEndState("loose", "You Loose!");
   },
   win: () => {
     timer.stop();
-    console.log("You win!");
-    grid.classList.add("disable");
+    checkFlags();
+    showEndState("win", "You Win!");
+  },
+  remove: () => {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) overlay.remove();
   },
 };
 
@@ -408,8 +414,20 @@ function checkFlags() {
     if (!f.hasMine) {
       f.uiBox.classList.remove("fa-flag");
       f.uiBox.classList.add("fa-times");
+    } else {
+      f.uiBox.style.backgroundColor = "#69e032";
     }
   }
+}
+
+function showEndState(state, msg) {
+  const overlay = document.createElement("div");
+  overlay.className = "overlay";
+  const message = document.createElement("h1");
+  message.className = `end-game-message ${state}`;
+  message.textContent = msg;
+  overlay.append(message);
+  pointerCatch.append(overlay);
 }
 
 // #############################################################################

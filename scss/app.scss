@@ -186,8 +186,42 @@ body {
   border-right: solid $primary-green 2px;
 }
 
-.disable {
-  pointer-events: none;
+.pointer-catch {
+  position: relative;
+}
+
+.overlay {
+  cursor: default;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  animation: 0.5s ease-in-out 1s forwards end-game-fade;
+
+  .end-game-message {
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    transform: translateY(-40px);
+    &.loose {
+      color: $primary-red;
+    }
+    &.win {
+      color: $green-light;
+    }
+  }
+}
+
+@keyframes end-game-fade {
+  to {
+    opacity: 1;
+  }
 }
 
 /* ######################################################### */
