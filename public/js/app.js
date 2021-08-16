@@ -389,7 +389,7 @@ function checkGameState() {
   if (safeDigsComplete && allMinesFlagged) endGame.win();
 }
 
-// end game with a win or loose
+// end game with a win or loose, or remove game end state
 const endGame = {
   loose: (triggeredMine) => {
     timer.stop();
