@@ -49,7 +49,8 @@ body {
 /* HEADER */
 /* ######################################################### */
 
-.fa-flag {
+.fa-flag,
+.fa-times {
   color: $primary-red;
   font-size: 2rem;
 }
@@ -120,11 +121,14 @@ body {
         justify-content: center;
         align-items: center;
         cursor: default;
-        &:not(.dug):hover {
-          background-color: $green-light !important;
+        &:hover {
+          filter: brightness(1.2);
         }
-        &.dug.num:hover {
-          background-color: $grey-light !important;
+        &.dug:not(.num):hover {
+          filter: none;
+        }
+        &.highlight {
+          filter: brightness(1.2);
         }
       }
       &_box.dug {
@@ -134,9 +138,11 @@ body {
       &_box.fa-flag {
         font-size: 2em;
       }
+      &_box.fa-times {
+        font-size: 3em;
+      }
       &_box.fa-bomb {
         font-size: 2em;
-        background-color: $primary-dark;
         color: maroon;
       }
     }
@@ -168,10 +174,20 @@ body {
 }
 
 .border_top {
-  border-top: solid $primary-green 4px;
+  border-top: solid $primary-green 2px;
 }
 .border_bottom {
-  border-top: solid $primary-green 4px;
+  border-bottom: solid $primary-green 2px;
+}
+.border_left {
+  border-left: solid $primary-green 2px;
+}
+.border_right {
+  border-right: solid $primary-green 2px;
+}
+
+.disable {
+  pointer-events: none;
 }
 
 /* ######################################################### */

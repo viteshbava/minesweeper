@@ -34,7 +34,8 @@ body {
 /* ######################################################### */
 /* HEADER */
 /* ######################################################### */
-.fa-flag {
+.fa-flag,
+.fa-times {
   color: #dc3545;
   font-size: 2rem;
 }
@@ -119,12 +120,16 @@ body {
   cursor: default;
 }
 
-.ms_grid_row_box:not(.dug):hover {
-  background-color: #69e032 !important;
+.ms_grid_row_box:hover {
+  filter: brightness(1.2);
 }
 
-.ms_grid_row_box.dug.num:hover {
-  background-color: #c9cdce !important;
+.ms_grid_row_box.dug:not(.num):hover {
+  filter: none;
+}
+
+.ms_grid_row_box.highlight {
+  filter: brightness(1.2);
 }
 
 .ms_grid_row_box.dug {
@@ -136,9 +141,12 @@ body {
   font-size: 2em;
 }
 
+.ms_grid_row_box.fa-times {
+  font-size: 3em;
+}
+
 .ms_grid_row_box.fa-bomb {
   font-size: 2em;
-  background-color: #333;
   color: maroon;
 }
 
@@ -175,11 +183,23 @@ body {
 }
 
 .border_top {
-  border-top: solid #15782e 4px;
+  border-top: solid #15782e 2px;
 }
 
 .border_bottom {
-  border-top: solid #15782e 4px;
+  border-bottom: solid #15782e 2px;
+}
+
+.border_left {
+  border-left: solid #15782e 2px;
+}
+
+.border_right {
+  border-right: solid #15782e 2px;
+}
+
+.disable {
+  pointer-events: none;
 }
 
 /* ######################################################### */
