@@ -157,6 +157,7 @@ const timer = new Timer();
 let leftButtonDown = false;
 let rightButtonDown = false;
 
+// check surrounding boxes upon both left & right mouse button click
 grid.addEventListener("mousedown", (e) => {
   // left mouse down
   if (e.button === 0) leftButtonDown = true;
@@ -167,7 +168,6 @@ grid.addEventListener("mousedown", (e) => {
     checkBox(box);
   }
 });
-
 grid.addEventListener("mouseup", (e) => {
   if (leftButtonDown && rightButtonDown) {
     const box = getClickedBox(e.target);
