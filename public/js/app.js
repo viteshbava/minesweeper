@@ -63,29 +63,26 @@ class Box {
   findNeighbours() {
     const n = this.neighbours;
     const { row, col } = this.pos;
-    if (row !== 0) n.top = boxes[row - 1][col]; // get the top box
-    if (row < settings.gridHeight - 1) n.bottom = boxes[row + 1][col]; // get the bottom box
-    if (col !== 0) n.left = boxes[row][col - 1]; // get the left box
-    if (col < settings.gridWidth - 1) n.right = boxes[row][col + 1]; // get the right box
-    if (row !== 0 && col !== 0) n.topleft = boxes[row - 1][col - 1]; // get top left corner
-    if (row !== 0 && col < settings.gridWidth - 1)
-      n.topright = boxes[row - 1][col + 1]; // get top right corner
-    if (row < settings.gridHeight - 1 && col !== 0)
-      n.bottomleft = boxes[row + 1][col - 1]; // get bottom left corner
-    if (row < settings.gridHeight - 1 && col < settings.gridWidth - 1)
-      n.bottomright = boxes[row + 1][col + 1]; // get bottom right corner
-    // add all neighbours to allNeighbours array
-    this.allNeighbours = Object.values(n);
+    n.topleft = boxes[row - 1]?.[col - 1]; // get top left corner
+    n.top = boxes[row - 1]?.[col]; // get the top box
+    n.topright = boxes[row - 1]?.[col + 1]; // get top right corner
+    n.right = boxes[row]?.[col + 1]; // get the right box
+    n.bottomright = boxes[row + 1]?.[col + 1]; // get bottom right corner
+    n.bottom = boxes[row + 1]?.[col]; // get the bottom box
+    n.bottomleft = boxes[row + 1]?.[col - 1]; // get bottom left corner
+    n.left = boxes[row]?.[col - 1]; // get the left box
+    // add all neighbours that exist to allNeighbours array
+    this.allNeighbours = Object.values(n).filter((n) => n);
   }
 
   // getarray of all neighbours that are unflagged/undug
-  getUnflaggedNeighbours() {
+  get unflaggedNeighbours() {
     return this.allNeighbours.filter((n) => !n.isDug && !n.hasFlag);
   }
 
   // toggle highlight all unflagged/undug neighbours
   checkToggleHighlight() {
-    for (const n of this.getUnflaggedNeighbours())
+    for (const n of this.unflaggedNeighbours)
       n.uiBox.classList.toggle("highlight");
   }
 
@@ -307,8 +304,7 @@ function digBox(box) {
   ////// reveal number of surrounding mines
   box.showMineCount();
   //// if no surrounding mines, dig all surrounding undug/unflagged boxes
-  if (box.surrMines === 0)
-    for (const b of box.getUnflaggedNeighbours()) digBox(b);
+  if (box.surrMines === 0) for (const b of box.unflaggedNeighbours) digBox(b);
 
   //// check game state
   checkGameState();
@@ -343,7 +339,7 @@ function checkBox(box) {
   if (box.surrMines === 0) return;
   // if surrounding boxes fully flagged, dig all surrounding undug/unflagged boxes
   if (box.getNumFlaggedNeighbours() >= box.surrMines) {
-    for (const b of box.getUnflaggedNeighbours()) digBox(b);
+    for (const b of box.unflaggedNeighbours) digBox(b);
   } else {
     // otherwise highlight the undug/unflagged boxes
     box.checkToggleHighlight();
